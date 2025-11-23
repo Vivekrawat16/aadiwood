@@ -18,12 +18,12 @@ export const founder: Founder = {
     bio: "Visionary leader dedicated to preserving and promoting Adivasi culture through modern media. With a passion for storytelling and cultural heritage, bridging tradition with contemporary expression.",
     achievements: [
         "Established Aadiwood Production",
-        "1M+ Views across platforms",
+        "1B+ Views across platforms",
         "Cultural Ambassador",
-        "Award-winning content creator",
+        "Patrika 40 Under 40",
     ],
     social: {
-        youtube: "https://www.youtube.com/@channelname",
+        youtube: "https://www.youtube.com/@MaiAadiwasi7",
         instagram: "https://www.instagram.com/username",
         facebook: "https://www.facebook.com/username",
     },

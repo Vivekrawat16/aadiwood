@@ -64,27 +64,20 @@ export default function HeroVideo() {
                         transition={{ delay: 1.0, duration: 0.6 }}
                         className="flex flex-col sm:flex-row gap-4 justify-center w-full max-w-md mx-auto sm:max-w-none"
                     >
-                        <button className="bg-primary hover:bg-accent text-white px-8 py-4 rounded-full font-bold flex items-center justify-center transition-all transform hover:scale-105 shadow-lg w-full sm:w-auto">
+                        <a
+                            href="https://youtu.be/3tWgV4_JJxU?si=qaNR1faefLOnSw66"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="bg-primary hover:bg-accent text-white px-8 py-4 rounded-full font-bold flex items-center justify-center transition-all transform hover:scale-105 shadow-lg w-full sm:w-auto"
+                        >
                             <Play className="mr-2 fill-current" size={20} />
                             Watch New Release
-                        </button>
-                        <button className="bg-white hover:bg-gray-50 border-2 border-primary text-primary hover:text-accent px-8 py-4 rounded-full font-bold transition-all w-full sm:w-auto">
-                            Explore Artists
-                        </button>
+                        </a>
                     </motion.div>
                 </motion.div>
             </div>
 
-            {/* Scroll Indicator */}
-            <motion.div
-                className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-gray-400"
-                animate={{ y: [0, 10, 0] }}
-                transition={{ repeat: Infinity, duration: 2 }}
-            >
-                <div className="w-6 h-10 border-2 border-gray-300 rounded-full flex justify-center p-1">
-                    <div className="w-1 h-2 bg-gray-400 rounded-full" />
-                </div>
-            </motion.div>
+
         </div>
     );
 }
