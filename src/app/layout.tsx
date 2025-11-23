@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${anton.variable} ${inter.variable} antialiased bg-background text-white font-sans`}
+        className={`${anton.variable} ${inter.variable} antialiased bg-background text-white font-sans overflow-x-hidden`}
       >
         <Navbar />
         <main className="min-h-screen">

@@ -40,7 +40,7 @@ export default function PartnersSection() {
     };
 
     return (
-        <section id="partners" className="relative py-16 bg-[#0a0a0a] overflow-visible">
+        <section id="partners" className="relative py-16 bg-[#0a0a0a] overflow-hidden">
             {/* Gradient glow background */}
             <div className="absolute top-0 left-1/3 w-[280px] h-[280px] bg-primary/20 rounded-full blur-[90px] opacity-30 -z-10"></div>
             <div className="absolute bottom-0 right-1/3 w-[280px] h-[280px] bg-secondary/20 rounded-full blur-[90px] opacity-30 -z-10"></div>
@@ -112,7 +112,7 @@ export default function PartnersSection() {
                                 <motion.div
                                     key={index}
                                     whileHover={{ scale: 1.02 }}
-                                    className="relative w-[300px] sm:w-[320px] flex-shrink-0 bg-[#151515]/90 backdrop-blur-md border border-white/10 rounded-2xl p-6 shadow-xl flex flex-col items-center"
+                                    className="relative w-[260px] xs:w-[280px] sm:w-[320px] flex-shrink-0 bg-[#151515]/90 backdrop-blur-md border border-white/10 rounded-2xl p-6 shadow-xl flex flex-col items-center"
                                 >
                                     {/* Floating profile image */}
                                     <div className="absolute -top-16 w-28 h-28 rounded-full shadow-lg">

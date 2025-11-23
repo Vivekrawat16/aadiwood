@@ -4,7 +4,6 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { mockVideos } from "@/lib/mockData";
 import { ChevronLeft, ChevronRight, TrendingUp } from "lucide-react";
-import Link from "next/link";
 import Image from "next/image";
 
 export default function VideoGrid() {
@@ -81,25 +80,51 @@ export default function VideoGrid() {
                             <AnimatePresence mode="wait">
                                 <motion.div
                                     key={currentIndex}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: -20 }}
-                                    transition={{ duration: 0.4, delay: 0.2 }}
+                                    initial={{ opacity: 0, x: 50 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    exit={{ opacity: 0, x: -50 }}
+                                    transition={{ duration: 0.5 }}
                                 >
-                                    <div className="flex items-center gap-3 text-primary mb-4">
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.2, duration: 0.5 }}
+                                        className="flex items-center gap-3 text-primary mb-4"
+                                    >
                                         <div className="w-12 h-1 bg-primary"></div>
                                         <span className="font-bold uppercase tracking-wider text-sm">Featured Video #{currentIndex + 1}</span>
-                                    </div>
+                                    </motion.div>
 
-                                    <h3 className="text-2xl md:text-4xl lg:text-5xl font-display font-bold text-accent mb-6 leading-tight">
+                                    <motion.h3
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.3, duration: 0.6 }}
+                                        className="text-2xl md:text-4xl lg:text-5xl font-display font-bold text-accent mb-6 leading-tight"
+                                    >
                                         {currentVideo.title}
-                                    </h3>
+                                    </motion.h3>
 
-                                    <p className="text-gray-600 text-lg leading-relaxed mb-8">
+                                    <motion.p
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        transition={{ delay: 0.4, duration: 0.6 }}
+                                        className="text-gray-600 text-lg leading-relaxed mb-8"
+                                    >
                                         {currentVideo.description || "Experience the authentic voice of Adivasi culture through this captivating visual journey."}
-                                    </p>
+                                    </motion.p>
 
-                                    {/* Carousel indicators */}
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.5, duration: 0.5 }}
+                                        className="flex flex-wrap gap-2 mb-8"
+                                    >
+                                        {(currentVideo.tags || []).map((tag, i) => (
+                                            <span key={i} className="px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm font-medium">
+                                                #{tag}
+                                            </span>
+                                        ))}
+                                    </motion.div>
                                     <div className="flex items-center gap-4 mb-8">
                                         {topVideos.map((video, index) => (
                                             <button

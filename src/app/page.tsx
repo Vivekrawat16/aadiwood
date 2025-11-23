@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 import HeroVideo from "@/components/home/HeroVideo";
 import VideoGrid from "@/components/video/VideoGrid";
 import PartnersSection from "@/components/home/PartnersSection";
@@ -24,24 +25,36 @@ export default function Home() {
       {/* Founder Section */}
       <section
         id="founder"
-        className="relative py-16 bg-gradient-to-br from-black via-gray-900 to-gray-950 overflow-hidden"
+        className="relative py-12 md:py-16 bg-gradient-to-br from-black via-gray-900 to-gray-950 overflow-hidden"
       >
         <div className="absolute -top-8 -right-8 w-[350px] h-[350px] bg-primary/10 blur-[100px] rounded-full"></div>
         <div className="absolute -bottom-8 -left-8 w-[350px] h-[350px] bg-secondary/10 blur-[100px] rounded-full"></div>
         <div className="container mx-auto px-6 lg:px-10 relative z-10">
-          <div className="text-center mb-8 md:mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-8 md:mb-12"
+          >
             <h2 className="text-3xl md:text-4xl font-display font-bold text-white">
               Meet Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Founder</span>
             </h2>
             <p className="mt-2 text-gray-400 text-xs md:text-sm uppercase tracking-wider">
               Vision behind Aadiwood Production
             </p>
-          </div>
+          </motion.div>
           {/* Founder Content */}
           <div className="max-w-5xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               {/* Photo */}
-              <div className="relative group flex justify-center md:justify-end">
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="relative group flex justify-center md:justify-end"
+              >
                 <div className="relative w-full max-w-[300px] aspect-[3/4] md:w-96 md:h-[500px] bg-gradient-to-b from-gray-800 to-gray-900 rounded-2xl">
                   <img
                     src={founder.photo}
@@ -64,9 +77,15 @@ export default function Home() {
                     )}
                   </div>
                 </div>
-              </div>
+              </motion.div>
               {/* Details */}
-              <div className="backdrop-blur-md bg-white/5 p-6 rounded-2xl border border-white/10 shadow-lg space-y-4">
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="backdrop-blur-md bg-white/5 p-6 rounded-2xl border border-white/10 shadow-lg space-y-4"
+              >
                 <div>
                   <h3 className="text-2xl md:text-3xl font-bold text-white">{founder.name}</h3>
                   <p className="text-sm text-primary font-semibold tracking-wide">{founder.role}</p>
@@ -96,27 +115,39 @@ export default function Home() {
                     Follow Journey →
                   </a>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
       </section>
 
       {/* About Us Section */}
-      <section id="about" className="py-16 md:py-24 bg-gray-50">
+      <section id="about" className="py-12 md:py-24 bg-gray-50">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-10 md:mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-10 md:mb-16"
+          >
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-accent mb-4">
               ABOUT <span className="cinematic-gradient">AADIWOOD</span>
             </h2>
             <div className="w-16 md:w-24 h-1 bg-primary mx-auto"></div>
-          </div>
+          </motion.div>
 
           {/* Split Layout with Image */}
           <div className="max-w-7xl mx-auto mb-16">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               {/* Left: Image */}
-              <div className="relative group">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="relative group"
+              >
                 <div className="relative w-full h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
                   <img
                     src="/cultural-heritage.jpg"
@@ -126,10 +157,16 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
                 </div>
                 <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-primary/20 rounded-full blur-2xl"></div>
-              </div>
+              </motion.div>
 
               {/* Right: Description */}
-              <div className="space-y-6">
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="space-y-6"
+              >
                 <p className="text-gray-600 text-lg leading-relaxed">
                   Aadiwood is a creative production house dedicated to showcasing the rich cultural heritage
                   of the Adivasi community through modern cinematography and storytelling.
@@ -147,15 +184,21 @@ export default function Home() {
                     Work With Us →
                   </button>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-16 md:py-24 bg-white cultural-border">
-        <div className="container mx-auto px-6 max-w-3xl text-center">
+      <section id="contact" className="py-12 md:py-24 bg-white cultural-border">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="container mx-auto px-6 max-w-3xl text-center"
+        >
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-accent mb-6">
             GET IN <span className="cinematic-gradient">TOUCH</span>
           </h2>
@@ -169,7 +212,7 @@ export default function Home() {
           >
             Contact Us
           </button>
-        </div>
+        </motion.div>
       </section>
 
       {/* Contact Form Modal */}

@@ -7,6 +7,7 @@ export interface Video {
     category: string;
     videoUrl: string;
     description?: string;
+    tags?: string[];
 }
 
 export const mockVideos: Video[] = [
@@ -19,6 +20,7 @@ export const mockVideos: Video[] = [
         category: "Music",
         videoUrl: "https://www.youtube.com/embed/HnnMo5dMdgs",
         description: "Aadiwood Production ( The Brand of Nimar ) presents Aadiwasi  a brand new song in the voice of Bheem Kanoje , Piru Bhai Solanki And Sheetal Senani   The lyrics of the new song are penned by  Rohit Padiyar Which in Aadiwasi (Barela) language. music by Ritesh Kirade. The video is directed by Rohit Vaishaki .",
+        tags: ["Adivasi", "Culture", "Music", "Tradition"],
     },
     {
         id: "2",
@@ -29,6 +31,7 @@ export const mockVideos: Video[] = [
         category: "Culture",
         videoUrl: "https://www.youtube.com/embed/9znbTXiBiqI",
         description: "🎵 *Aadiwood Production* (The Brand of Nimar) proudly presents Aapna Aadiwasi — a brand new *Adivasi song* that celebrates our culture, identity, and unity.",
+        tags: ["Celebration", "Identity", "Unity", "Folk"],
     },
     {
         id: "3",
@@ -39,5 +42,6 @@ export const mockVideos: Video[] = [
         category: "Love",
         videoUrl: "https://www.youtube.com/embed/QuYqDX0-hGo",
         description: "The latest romantic melody from the heart of traditional music.",
+        tags: ["Romance", "Melody", "Love", "Song"],
     },
 ];
