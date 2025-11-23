@@ -23,7 +23,7 @@ export default function VideoGrid() {
     };
 
     return (
-        <section id="videos" className="py-32 bg-gradient-to-br from-gray-50 via-white to-primary/5 relative overflow-hidden">
+        <section id="videos" className="py-16 md:py-32 bg-gradient-to-br from-gray-50 via-white to-primary/5 relative overflow-hidden">
             {/* Decorative background elements */}
             <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
             <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl"></div>
@@ -35,7 +35,7 @@ export default function VideoGrid() {
                         <TrendingUp size={18} />
                         <span className="text-sm font-bold uppercase tracking-wider">Trending Now</span>
                     </div>
-                    <h2 className="text-6xl md:text-7xl font-display font-bold text-accent mb-6 leading-tight">
+                    <h2 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-accent mb-6 leading-tight">
                         TOP <span className="cinematic-gradient">HITS</span>
                     </h2>
                     <p className="text-gray-600 text-xl max-w-2xl mx-auto">
@@ -91,7 +91,7 @@ export default function VideoGrid() {
                                         <span className="font-bold uppercase tracking-wider text-sm">Featured Video #{currentIndex + 1}</span>
                                     </div>
 
-                                    <h3 className="text-4xl md:text-5xl font-display font-bold text-accent mb-6 leading-tight">
+                                    <h3 className="text-2xl md:text-4xl lg:text-5xl font-display font-bold text-accent mb-6 leading-tight">
                                         {currentVideo.title}
                                     </h3>
 
@@ -122,26 +122,27 @@ export default function VideoGrid() {
                                         ))}
                                     </div>
 
-                                    {/* Navigation buttons */}
-                                    <div className="flex items-center gap-4">
-                                        <button
-                                            onClick={prevSlide}
-                                            className="w-14 h-14 bg-white hover:bg-primary border-2 border-gray-200 hover:border-primary text-accent hover:text-white rounded-full flex items-center justify-center transition-all shadow-md hover:shadow-xl"
-                                        >
-                                            <ChevronLeft size={24} />
-                                        </button>
-                                        <button
-                                            onClick={nextSlide}
-                                            className="w-14 h-14 bg-primary hover:bg-accent text-white rounded-full flex items-center justify-center transition-all shadow-md hover:shadow-xl"
-                                        >
-                                            <ChevronRight size={24} />
-                                        </button>
+                                    <div className="flex flex-col sm:flex-row items-center gap-4">
+                                        <div className="flex gap-4 w-full sm:w-auto justify-center">
+                                            <button
+                                                onClick={prevSlide}
+                                                className="w-14 h-14 bg-white hover:bg-primary border-2 border-gray-200 hover:border-primary text-accent hover:text-white rounded-full flex items-center justify-center transition-all shadow-md hover:shadow-xl"
+                                            >
+                                                <ChevronLeft size={24} />
+                                            </button>
+                                            <button
+                                                onClick={nextSlide}
+                                                className="w-14 h-14 bg-primary hover:bg-accent text-white rounded-full flex items-center justify-center transition-all shadow-md hover:shadow-xl"
+                                            >
+                                                <ChevronRight size={24} />
+                                            </button>
+                                        </div>
 
                                         <a
                                             href={currentVideo.videoUrl.replace("embed/", "watch?v=")}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="flex-1 bg-accent hover:bg-primary text-white py-4 px-8 rounded-full font-bold text-center transition-all shadow-lg hover:shadow-2xl uppercase tracking-wider"
+                                            className="w-full sm:flex-1 bg-accent hover:bg-primary text-white py-4 px-8 rounded-full font-bold text-center transition-all shadow-lg hover:shadow-2xl uppercase tracking-wider"
                                         >
                                             Watch Now
                                         </a>

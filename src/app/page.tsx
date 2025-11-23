@@ -29,11 +29,11 @@ export default function Home() {
         <div className="absolute -top-8 -right-8 w-[350px] h-[350px] bg-primary/10 blur-[100px] rounded-full"></div>
         <div className="absolute -bottom-8 -left-8 w-[350px] h-[350px] bg-secondary/10 blur-[100px] rounded-full"></div>
         <div className="container mx-auto px-6 lg:px-10 relative z-10">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8 md:mb-12">
             <h2 className="text-3xl md:text-4xl font-display font-bold text-white">
               Meet Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Founder</span>
             </h2>
-            <p className="mt-2 text-gray-400 text-sm uppercase tracking-wider">
+            <p className="mt-2 text-gray-400 text-xs md:text-sm uppercase tracking-wider">
               Vision behind Aadiwood Production
             </p>
           </div>
@@ -42,7 +42,7 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               {/* Photo */}
               <div className="relative group flex justify-center md:justify-end">
-                <div className="relative w-80 h-[450px] md:w-96 md:h-[500px] bg-gradient-to-b from-gray-800 to-gray-900 rounded-2xl">
+                <div className="relative w-full max-w-[300px] aspect-[3/4] md:w-96 md:h-[500px] bg-gradient-to-b from-gray-800 to-gray-900 rounded-2xl">
                   <img
                     src={founder.photo}
                     alt={founder.name}
@@ -103,13 +103,13 @@ export default function Home() {
       </section>
 
       {/* About Us Section */}
-      <section id="about" className="py-24 bg-gray-50">
+      <section id="about" className="py-16 md:py-24 bg-gray-50">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl md:text-6xl font-display font-bold text-accent mb-4">
+          <div className="text-center mb-10 md:mb-16">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-accent mb-4">
               ABOUT <span className="cinematic-gradient">AADIWOOD</span>
             </h2>
-            <div className="w-24 h-1 bg-primary mx-auto"></div>
+            <div className="w-16 md:w-24 h-1 bg-primary mx-auto"></div>
           </div>
 
           {/* Split Layout with Image */}
@@ -154,12 +154,12 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-24 bg-white cultural-border">
+      <section id="contact" className="py-16 md:py-24 bg-white cultural-border">
         <div className="container mx-auto px-6 max-w-3xl text-center">
-          <h2 className="text-5xl md:text-6xl font-display font-bold text-accent mb-6">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-accent mb-6">
             GET IN <span className="cinematic-gradient">TOUCH</span>
           </h2>
-          <div className="w-24 h-1 bg-secondary mx-auto mb-8"></div>
+          <div className="w-16 md:w-24 h-1 bg-secondary mx-auto mb-8"></div>
           <p className="text-gray-500 text-lg mb-10 leading-relaxed">
             Have a project in mind? Let's create something amazing together.
           </p>

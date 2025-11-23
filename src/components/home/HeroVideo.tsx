@@ -34,7 +34,7 @@ export default function HeroVideo() {
                     <h2 className="text-yellow-400 font-bold tracking-widest uppercase mb-4 text-sm md:text-base">
                         Official Production House
                     </h2>
-                    <h1 className="text-6xl md:text-8xl font-display font-bold text-white mb-6 leading-tight">
+                    <h1 className="text-4xl md:text-6xl lg:text-8xl font-display font-bold text-white mb-6 leading-tight">
                         THE VOICE OF <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-orange-500 to-red-600">ADIVASI</span> CULTURE
                     </h1>
@@ -43,12 +43,12 @@ export default function HeroVideo() {
                         Experience the untold stories of the land in high definition.
                     </p>
 
-                    <div className="flex flex-col md:flex-row gap-4 justify-center">
-                        <button className="bg-primary hover:bg-accent text-white px-8 py-4 rounded-full font-bold flex items-center justify-center transition-all transform hover:scale-105 shadow-lg">
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center w-full max-w-md mx-auto sm:max-w-none">
+                        <button className="bg-primary hover:bg-accent text-white px-8 py-4 rounded-full font-bold flex items-center justify-center transition-all transform hover:scale-105 shadow-lg w-full sm:w-auto">
                             <Play className="mr-2 fill-current" size={20} />
                             Watch New Release
                         </button>
-                        <button className="bg-white hover:bg-gray-50 border-2 border-primary text-primary hover:text-accent px-8 py-4 rounded-full font-bold transition-all">
+                        <button className="bg-white hover:bg-gray-50 border-2 border-primary text-primary hover:text-accent px-8 py-4 rounded-full font-bold transition-all w-full sm:w-auto">
                             Explore Artists
                         </button>
                     </div>

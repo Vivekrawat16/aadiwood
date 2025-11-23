@@ -52,7 +52,7 @@ export default function PartnersSection() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-5xl md:text-6xl font-display font-bold text-white"
+                        className="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-white"
                     >
                         CREATIVE{" "}
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-white to-secondary">
