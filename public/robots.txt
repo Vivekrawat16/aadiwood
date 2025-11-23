@@ -1,0 +1,10 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Host
+Host: https://aadiwood.com
+
+# Sitemaps
+Sitemap: https://aadiwood.com/sitemap.xml

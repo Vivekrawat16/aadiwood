@@ -58,7 +58,7 @@ export default function Home() {
                 <div className="relative w-full max-w-[300px] aspect-[3/4] md:w-96 md:h-[500px] bg-gradient-to-b from-gray-800 to-gray-900 rounded-2xl">
                   <img
                     src={founder.photo}
-                    alt={founder.name}
+                    alt={`${founder.name}, Founder and Creative Director of Aadiwood Production - Promoting Adivasi Culture`}
                     className="w-full h-full object-cover object-top rounded-2xl shadow-xl transition-transform duration-500 ease-out group-hover:scale-102 group-hover:shadow-[0_0_30px_rgba(200,0,0,0.25)]"
                   />
                   <div className="absolute -bottom-4 left-0 right-0 flex justify-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
@@ -151,7 +151,7 @@ export default function Home() {
                 <div className="relative w-full h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
                   <img
                     src="/cultural-heritage.jpg"
-                    alt="Adivasi Cultural Heritage"
+                    alt="Adivasi Cultural Heritage - Traditional tribal art and customs preserved by Aadiwood Production"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
