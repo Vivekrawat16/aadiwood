@@ -60,7 +60,7 @@ export default function AntiGravityHero() {
 
         // Floating Objects (Abstract shapes representing Camera, Music, Culture)
         const shapes = [];
-        const colors = ["#F68529", "#F5D34F", "#00FF99", "#FFFFFF"];
+        const colors = ["#1A4D2E", "#D27D2D", "#FDFBF7", "#A4C639"]; // Forest Green, Clay, Cream, Muted Lime
 
         for (let i = 0; i < 15; i++) {
             const x = Math.random() * (width - 100) + 50;

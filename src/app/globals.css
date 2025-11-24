@@ -1,40 +1,42 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #8B0000;
-  /* Deep Maroon/Crimson - Cinematic */
-  --color-secondary: #D4AF37;
-  /* Gold - Cultural */
-  --color-background: #FFFFFF;
-  /* Pure White */
-  --color-accent: #1A1A1A;
-  /* Deep Black */
+  --color-primary: #1A4D2E;
+  /* Deep Forest Green */
+  --color-secondary: #D27D2D;
+  /* Earthy Clay/Terracotta */
+  --color-background: #FDFBF7;
+  /* Cream/Off-white */
+  --color-accent: #2C3329;
+  /* Dark Olive/Charcoal */
 
-  --font-sans: var(--font-inter);
-  --font-display: var(--font-anton);
+  --font-sans: var(--font-open-sans);
+  --font-display: var(--font-montserrat);
 }
 
 @layer utilities {
   .cinematic-card {
     background: #FFFFFF;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(26, 77, 46, 0.08);
+    box-shadow: 0 4px 20px rgba(26, 77, 46, 0.05);
     transition: all 0.3s ease;
+    border-radius: 1rem;
   }
 
   .cinematic-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 60px rgba(139, 0, 0, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(26, 77, 46, 0.12);
+    border-color: var(--color-primary);
   }
 
   .glass-light {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    background: rgba(253, 251, 247, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(26, 77, 46, 0.08);
   }
 
   .cinematic-gradient {
-    background: linear-gradient(135deg, #8B0000 0%, #B8860B 100%);
+    background: linear-gradient(135deg, #1A4D2E 0%, #D27D2D 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -62,13 +64,8 @@
 
 body {
   background-color: var(--color-background);
-  /* Subtle paper texture */
-  background-image:
-    repeating-linear-gradient(0deg,
-      transparent,
-      transparent 50px,
-      rgba(0, 0, 0, 0.01) 50px,
-      rgba(0, 0, 0, 0.01) 51px);
+  /* Subtle organic texture */
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231A4D2E' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   color: var(--color-accent);
   font-family: var(--font-sans);
 }

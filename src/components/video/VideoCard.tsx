@@ -18,7 +18,7 @@ export default function VideoCard({ video }: VideoCardProps) {
         >
             <motion.div
                 whileHover={{ y: -10 }}
-                className="group relative cinematic-card rounded-lg overflow-hidden cursor-pointer"
+                className="group relative cinematic-card rounded-2xl overflow-hidden cursor-pointer"
             >
                 {/* Thumbnail Container */}
                 <div className="relative aspect-video w-full overflow-hidden">
@@ -33,7 +33,7 @@ export default function VideoCard({ video }: VideoCardProps) {
 
                 {/* Content */}
                 <div className="p-4">
-                    <h3 className="text-white font-bold text-lg leading-tight mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+                    <h3 className="text-accent font-bold text-lg leading-tight mb-2 line-clamp-2 group-hover:text-primary transition-colors">
                         {video.title}
                     </h3>
                 </div>

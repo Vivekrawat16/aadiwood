@@ -1,20 +1,19 @@
 import type { Metadata } from "next";
-import { Anton, Inter } from "next/font/google";
+import { Montserrat, Open_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import StructuredData from "@/components/StructuredData";
 
-const anton = Anton({
-  weight: "400",
+const montserrat = Montserrat({
   subsets: ["latin"],
-  variable: "--font-anton",
+  variable: "--font-montserrat",
 });
 
-const inter = Inter({
+const openSans = Open_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-open-sans",
 });
 
 
@@ -99,7 +98,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${anton.variable} ${inter.variable} antialiased bg-background text-white font-sans overflow-x-hidden`}
+        className={`${montserrat.variable} ${openSans.variable} antialiased bg-background text-accent font-sans overflow-x-hidden`}
       >
         <Navbar />
         <StructuredData />

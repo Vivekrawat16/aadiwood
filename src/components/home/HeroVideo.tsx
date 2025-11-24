@@ -35,7 +35,7 @@ export default function HeroVideo() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2, duration: 0.6 }}
-                        className="text-yellow-400 font-bold tracking-widest uppercase mb-4 text-sm md:text-base"
+                        className="text-secondary font-bold tracking-widest uppercase mb-4 text-sm md:text-base"
                     >
                         Official Production House
                     </motion.h2>
@@ -46,7 +46,7 @@ export default function HeroVideo() {
                         className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-display font-bold text-white mb-6 leading-tight"
                     >
                         THE VOICE OF <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-orange-500 to-red-600">ADIVASI</span> CULTURE
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-white">ADIVASI</span> CULTURE
                     </motion.h1>
                     <motion.p
                         initial={{ opacity: 0 }}
