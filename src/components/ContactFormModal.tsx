@@ -100,7 +100,7 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
                             {/* Header */}
                             <div className="p-8 pb-6">
                                 <h2 className="text-3xl font-display font-bold text-accent mb-2">
-                                    Get In <span className="cinematic-gradient">Touch</span>
+                                    Get In <span className="text-primary">Touch</span>
                                 </h2>
                                 <p className="text-gray-600">
                                     Fill out the form below and we'll get back to you soon.
@@ -132,13 +132,13 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
                                     </p>
                                     <button
                                         onClick={onClose}
-                                        className="bg-primary text-white px-6 py-2 rounded-full font-medium hover:bg-primary/90 transition-colors"
+                                        className="bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-2 rounded-full font-medium transition-colors"
                                     >
                                         Close
                                     </button>
                                 </div>
                             ) : (
-                                <form onSubmit={handleSubmit} className="px-8 pb-8 space-y-4">
+                                <form onSubmit={handleSubmit} className="px-8 pb-8 space-y-5">
                                     {/* Name */}
                                     <div>
                                         <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
@@ -151,7 +151,7 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
                                             value={formData.name}
                                             onChange={handleChange}
                                             required
-                                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
+                                            className="w-full px-4 py-3 border border-emerald-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all"
                                             placeholder="John Doe"
                                         />
                                     </div>
@@ -168,7 +168,7 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
                                             value={formData.email}
                                             onChange={handleChange}
                                             required
-                                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
+                                            className="w-full px-4 py-3 border border-emerald-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all"
                                             placeholder="john@example.com"
                                         />
                                     </div>
@@ -185,7 +185,7 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
                                             value={formData.phone}
                                             onChange={handleChange}
                                             required
-                                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
+                                            className="w-full px-4 py-3 border border-emerald-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all"
                                             placeholder="+1 (555) 123-4567"
                                         />
                                     </div>
@@ -201,7 +201,7 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
                                             value={formData.message}
                                             onChange={handleChange}
                                             rows={4}
-                                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all resize-none"
+                                            className="w-full px-4 py-3 border border-emerald-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all resize-none"
                                             placeholder="Tell us about your project..."
                                         />
                                     </div>
@@ -217,7 +217,7 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
                                     <button
                                         type="submit"
                                         disabled={isSubmitting}
-                                        className="w-full bg-gradient-to-r from-primary to-secondary text-white py-3 px-6 rounded-full font-bold uppercase text-sm tracking-wide shadow-lg hover:shadow-xl transition-all hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                                        className="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-3 px-6 rounded-full font-bold uppercase text-sm tracking-wide shadow-lg hover:shadow-xl transition-all hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
                                     >
                                         {isSubmitting ? "Submitting..." : "Send Message"}
                                     </button>

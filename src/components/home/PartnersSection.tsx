@@ -143,13 +143,13 @@ export default function PartnersSection() {
                                         </p>
                                     </div>
 
-                                    {/* ✔ Updated Gradient Button */}
+                                    {/* Modern Nature Button */}
                                     <a
                                         href={partner.channelUrl}
                                         target="_blank"
-                                        className="mt-auto w-full text-center text-xs font-medium py-2 rounded-full 
-                               bg-gradient-to-r from-primary to-secondary 
-                               text-white shadow-md hover:opacity-90 transition-all duration-300"
+                                        className="mt-auto w-full text-center text-sm font-semibold py-3 rounded-full 
+                               bg-emerald-600 hover:bg-emerald-500 
+                               text-white shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
                                     >
                                         View Profile →
                                     </a>

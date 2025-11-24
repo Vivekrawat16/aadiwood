@@ -40,18 +40,20 @@ export default function Navbar() {
 
     return (
         <nav
-            className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? "glass-light shadow-sm backdrop-blur-lg" : "bg-primary/80 backdrop-blur-md"
+            className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? "glass-light shadow-lg backdrop-blur-xl" : "bg-transparent"
                 }`}
         >
-            <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-                <Link href="/" className="flex items-center gap-3">
-                    <Image src="/logo.png" alt="Aadiwood Logo" width={60} height={60} className="object-contain" />
-                    <div className="flex flex-col">
-                        <div className={`text-3xl md:text-4xl font-display font-bold ${scrolled ? "text-accent" : "text-white"}`}>
-                            AADIWOOD
-                        </div>
-                        <span className={`text-xs tracking-widest uppercase border-t pt-0.5 ${scrolled ? "text-gray-500 border-gray-300" : "text-gray-300 border-gray-400"}`}>The Brand of Nimar</span>
-                    </div>
+            <div className="container mx-auto px-6 py-1 flex justify-between items-center">
+                <Link href="/" className="flex items-center">
+                    <Image
+                        src={scrolled ? "/logo-scrolled-v2.png" : "/logo-full-v2.png"}
+                        alt="Aadiwood Production - The Brand of Nimar"
+                        width={200}
+                        height={60}
+                        style={{ height: "auto" }}
+                        priority
+                        className="object-contain transition-all duration-300"
+                    />
                 </Link>
 
                 {/* Desktop Menu */}

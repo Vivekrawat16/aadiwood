@@ -30,7 +30,7 @@
   }
 
   .glass-light {
-    background: rgba(253, 251, 247, 0.95);
+    background: rgba(253, 251, 247, 0.7);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(26, 77, 46, 0.08);
   }

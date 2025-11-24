@@ -68,7 +68,7 @@ export default function HeroVideo() {
                             href="https://youtu.be/3tWgV4_JJxU?si=qaNR1faefLOnSw66"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="bg-primary hover:bg-accent text-white px-8 py-4 rounded-full font-bold flex items-center justify-center transition-all transform hover:scale-105 shadow-lg w-full sm:w-auto"
+                            className="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-4 rounded-full font-bold flex items-center justify-center transition-all transform hover:scale-105 shadow-lg hover:shadow-xl w-full sm:w-auto"
                         >
                             <Play className="mr-2 fill-current" size={20} />
                             Watch New Release
