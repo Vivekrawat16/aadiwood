@@ -48,6 +48,18 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  icons: {
+    icon: [
+      { url: "/icon.png" },
+      { url: "/icon.png", sizes: "32x32", type: "image/png" },
+      { url: "/icon.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: [
+      { url: "/icon.png" },
+      { url: "/icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: "/icon.png",
+  },
   openGraph: {
     title: "Aadiwood Production | The Voice of Adivasi Culture",
     description: "Promoting Adivasi culture through modern film production and music videos. The Brand of Nimar.",
