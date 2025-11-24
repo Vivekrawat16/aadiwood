@@ -107,6 +107,7 @@ export default function VideoPage() {
                                                 src={relatedVideo.thumbnail}
                                                 alt={relatedVideo.title}
                                                 fill
+                                                sizes="160px"
                                                 className="object-cover group-hover:scale-110 transition-transform duration-300"
                                             />
                                         </div>
