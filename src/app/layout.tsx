@@ -49,16 +49,8 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   icons: {
-    icon: [
-      { url: "/icon.png" },
-      { url: "/icon.png", sizes: "32x32", type: "image/png" },
-      { url: "/icon.png", sizes: "16x16", type: "image/png" },
-    ],
-    apple: [
-      { url: "/icon.png" },
-      { url: "/icon.png", sizes: "180x180", type: "image/png" },
-    ],
-    shortcut: "/icon.png",
+    icon: "/favicon.ico",
+    apple: "/favicon.ico",
   },
   openGraph: {
     title: "Aadiwood Production | The Voice of Adivasi Culture",

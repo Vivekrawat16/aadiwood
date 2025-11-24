@@ -42,6 +42,6 @@ export const mockVideos: Video[] = [
         category: "Love",
         videoUrl: "https://www.youtube.com/embed/QuYqDX0-hGo",
         description: "The latest romantic melody from the heart of traditional music.",
-        tags: ["Romance", "Melody", "Love", "Song"],
+        tags: ["Adivasi", "Culture", "Music", "Tradition"],
     },
 ];
