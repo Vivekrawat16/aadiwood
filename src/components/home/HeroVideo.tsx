@@ -43,16 +43,17 @@ export default function HeroVideo() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.4, duration: 0.8 }}
-                        className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-display font-bold text-white mb-6 leading-tight"
+                        className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-display font-bold text-white mb-6 leading-tight drop-shadow-2xl"
                     >
-                        THE VOICE OF <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-white">ADIVASI</span> CULTURE
+                        <span className="drop-shadow-[0_0_30px_rgba(255,255,255,0.3)]">THE VOICE OF</span> <br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-white drop-shadow-[0_0_40px_rgba(210,125,45,0.5)]">ADIVASI</span>{" "}
+                        <span className="drop-shadow-[0_0_30px_rgba(255,255,255,0.3)]">CULTURE</span>
                     </motion.h1>
                     <motion.p
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.8, duration: 0.8 }}
-                        className="text-gray-200 max-w-2xl mx-auto mb-10 text-lg"
+                        className="text-gray-200 max-w-2xl mx-auto mb-10 text-lg drop-shadow-lg"
                     >
                         Bridging the gap between traditional roots and modern cinema.
                         Experience the untold stories of the land in high definition.
