@@ -5,7 +5,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import StructuredData from "@/components/StructuredData";
-import CustomCursor from "@/components/ui/CustomCursor";
+import { LanguageProvider } from "@/context/LanguageContext";
 
 const faunaOne = Fauna_One({
   weight: "400",
@@ -85,12 +85,13 @@ export default function RootLayout({
       <body
         className={`${faunaOne.variable} ${dmSans.variable} antialiased`}
       >
-        <CustomCursor />
-        <Navbar />
-        <StructuredData />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
-        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ""} />
+        <LanguageProvider>
+          <Navbar />
+          <StructuredData />
+          <main className="min-h-screen">{children}</main>
+          <Footer />
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ""} />
+        </LanguageProvider>
       </body>
     </html>
   );

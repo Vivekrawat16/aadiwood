@@ -5,8 +5,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { X } from "lucide-react";
 import { WarliDivider, GondOverlay } from "@/components/ui/WarliComponents";
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/lib/translations";
 
 export default function ExplorePage() {
+    const { language } = useLanguage();
+    const t = translations[language].explore;
+
     return (
         <div className="min-h-screen bg-gradient-to-b from-[#020501] to-deep-forest relative overflow-x-hidden text-warm-taupe font-body">
             {/* Noise Texture Overlay */}
@@ -53,8 +58,8 @@ export default function ExplorePage() {
                                 transition={{ delay: 0.3, duration: 0.8 }}
                                 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-terracotta drop-shadow-lg leading-tight"
                             >
-                                Jal, Jungle, Jamin: <br />
-                                <span className="text-white">The Eternal Covenant</span>
+                                {t.title} <br />
+                                <span className="text-white">{t.subtitle}</span>
                             </motion.h1>
                         </div>
                     </div>
@@ -70,7 +75,7 @@ export default function ExplorePage() {
                             className="max-w-3xl mx-auto text-center"
                         >
                             <p className="text-lg md:text-xl leading-relaxed text-warm-taupe/90 font-light">
-                                For centuries, the identity of the Adivasi community has been woven from three sacred threads: <span className="text-ochre-gold font-bold">Jal (Water)</span>, <span className="text-ochre-gold font-bold">Jungle (Forest)</span>, and <span className="text-ochre-gold font-bold">Jamin (Land)</span>. This is not merely a slogan; it is the rhythm of our daily existence. In the high hills of the Satpura range, the forest is not a resource to be exploited, but a living ancestor to be revered. This deep ecological bond gave rise to the concept of the <span className="italic">'Jungle Rakhwala'</span>—the Forest Guardian.
+                                {t.intro}
                             </p>
                         </motion.div>
 
@@ -84,9 +89,9 @@ export default function ExplorePage() {
                                 viewport={{ once: true }}
                                 className="order-2 md:order-1"
                             >
-                                <h3 className="text-2xl font-display font-bold text-ochre-gold mb-6">Digital Roots</h3>
+                                <h3 className="text-2xl font-display font-bold text-ochre-gold mb-6">{t.digitalRoots}</h3>
                                 <p className="text-lg leading-relaxed text-gray-300">
-                                    Today, Aadiwood Production translates this ancient duty into a digital format. Through songs like <span className="text-terracotta font-medium">'Jangal Rakhwala Re'</span>, we remind the new generation that while we may hold smartphones, our roots remain in the soil.
+                                    {t.digitalRootsDesc}
                                 </p>
                             </motion.div>
 
@@ -118,7 +123,7 @@ export default function ExplorePage() {
                                 className="max-w-3xl mx-auto text-center"
                             >
                                 <p className="text-xl md:text-2xl font-display text-white leading-relaxed">
-                                    "From the vibrant beats of the Bhangoriya festival to the solemn tunes of the Mandal, every rhythm is a tribute to nature. When you watch an Aadiwood video, you aren't just seeing a dance; you are witnessing the preservation of the Jal, Jungle, Jamin philosophy in 4K resolution."
+                                    {t.conclusion}
                                 </p>
                             </motion.div>
 

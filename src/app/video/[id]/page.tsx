@@ -8,18 +8,31 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import Button from "@/components/ui/Button";
 import { WarliDivider } from "@/components/ui/WarliComponents";
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/lib/translations";
 
 export default function VideoPage() {
     const params = useParams();
     const id = params.id as string;
-    const video = mockVideos.find((v) => v.id === id);
+    const { language } = useLanguage();
+    const t = translations[language].videoPage;
+    const translatedVideosList = translations[language].videos;
+
+    // Find the static video data (for URL, thumbnail, views, etc.)
+    const staticVideo = mockVideos.find((v) => v.id === id);
+
+    // Find the translated video data (for title, description, category)
+    const translatedVideoData = translatedVideosList.find((v) => v.id === id);
+
+    // Merge them
+    const video = staticVideo && translatedVideoData ? { ...staticVideo, ...translatedVideoData } : null;
 
     if (!video) {
         return (
             <div className="min-h-screen bg-midnight-canopy text-warm-taupe flex flex-col items-center justify-center">
-                <h1 className="text-4xl font-display font-bold mb-4">Video Not Found</h1>
+                <h1 className="text-4xl font-display font-bold mb-4">{t.notFound}</h1>
                 <Link href="/" className="text-terracotta hover:underline">
-                    Return Home
+                    {t.returnHome}
                 </Link>
             </div>
         );
@@ -38,7 +51,7 @@ export default function VideoPage() {
                     className="inline-flex items-center text-ochre-gold hover:text-white mb-8 transition-colors group"
                 >
                     <ArrowLeft size={20} className="mr-2 group-hover:-translate-x-1 transition-transform" />
-                    Back to Forest
+                    {t.backToForest}
                 </Link>
 
                 {/* Cinema Mode Player */}
@@ -77,11 +90,11 @@ export default function VideoPage() {
                             <div className="flex flex-wrap items-center gap-6 text-sm text-gray-400 font-medium">
                                 <span className="flex items-center text-sapling-green">
                                     <Eye size={18} className="mr-2" />
-                                    {video.views} views
+                                    {video.views} {t.views}
                                 </span>
                                 <span className="flex items-center">
                                     <Calendar size={18} className="mr-2" />
-                                    2 days ago
+                                    2 {t.daysAgo}
                                 </span>
                                 <span className="px-3 py-1 bg-white/5 rounded-full border border-white/10 text-xs uppercase tracking-wider">
                                     {video.category}
@@ -91,15 +104,15 @@ export default function VideoPage() {
 
                         <div className="flex gap-4">
                             <Button variant="primary" className="flex items-center gap-2 px-6">
-                                <ThumbsUp size={18} /> Like
+                                <ThumbsUp size={18} /> {t.like}
                             </Button>
                             <Button variant="ghost" className="flex items-center gap-2 px-6">
-                                <Share2 size={18} /> Share
+                                <Share2 size={18} /> {t.share}
                             </Button>
                         </div>
 
                         <div className="glass-panel p-8 rounded-2xl">
-                            <h3 className="font-display font-bold text-xl text-ochre-gold mb-4">Story of the Song</h3>
+                            <h3 className="font-display font-bold text-xl text-ochre-gold mb-4">{t.story}</h3>
                             <p className="text-gray-300 leading-relaxed text-lg font-light">
                                 {video.description || "Immerse yourself in the rhythm of the Nimar valley. This visual masterpiece captures the essence of Adivasi tradition, blending ancient instruments with modern storytelling."}
                             </p>
@@ -109,41 +122,47 @@ export default function VideoPage() {
                     {/* Sidebar / Up Next */}
                     <div className="lg:col-span-1">
                         <h3 className="text-xl font-display font-bold text-white mb-6 flex items-center gap-2">
-                            <Play size={20} className="text-terracotta" /> Up Next
+                            <Play size={20} className="text-terracotta" /> {t.upNext}
                         </h3>
                         <div className="space-y-6">
                             {mockVideos
                                 .filter((v) => v.id !== video.id)
                                 .slice(0, 4)
-                                .map((relatedVideo, index) => (
-                                    <motion.div
-                                        initial={{ opacity: 0, x: 20 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        transition={{ delay: index * 0.1 }}
-                                        key={relatedVideo.id}
-                                    >
-                                        <Link
-                                            href={`/video/${relatedVideo.id}`}
-                                            className="flex gap-4 group p-3 rounded-xl hover:bg-white/5 transition-colors"
+                                .map((relatedVideo, index) => {
+                                    // Get translated title for related video
+                                    const relatedTranslated = translatedVideosList.find(tv => tv.id === relatedVideo.id);
+                                    const title = relatedTranslated ? relatedTranslated.title : relatedVideo.title;
+
+                                    return (
+                                        <motion.div
+                                            initial={{ opacity: 0, x: 20 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            transition={{ delay: index * 0.1 }}
+                                            key={relatedVideo.id}
                                         >
-                                            <div className="relative w-32 aspect-video rounded-lg overflow-hidden flex-shrink-0 border border-white/10">
-                                                <Image
-                                                    src={relatedVideo.thumbnail}
-                                                    alt={relatedVideo.title}
-                                                    fill
-                                                    sizes="128px"
-                                                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                                                />
-                                            </div>
-                                            <div>
-                                                <h4 className="font-bold text-sm text-warm-taupe group-hover:text-terracotta transition-colors line-clamp-2 mb-1">
-                                                    {relatedVideo.title}
-                                                </h4>
-                                                <p className="text-xs text-gray-500">{relatedVideo.views} views</p>
-                                            </div>
-                                        </Link>
-                                    </motion.div>
-                                ))}
+                                            <Link
+                                                href={`/video/${relatedVideo.id}`}
+                                                className="flex gap-4 group p-3 rounded-xl hover:bg-white/5 transition-colors"
+                                            >
+                                                <div className="relative w-32 aspect-video rounded-lg overflow-hidden flex-shrink-0 border border-white/10">
+                                                    <Image
+                                                        src={relatedVideo.thumbnail}
+                                                        alt={title}
+                                                        fill
+                                                        sizes="128px"
+                                                        className="object-cover group-hover:scale-110 transition-transform duration-500"
+                                                    />
+                                                </div>
+                                                <div>
+                                                    <h4 className="font-bold text-sm text-warm-taupe group-hover:text-terracotta transition-colors line-clamp-2 mb-1">
+                                                        {title}
+                                                    </h4>
+                                                    <p className="text-xs text-gray-500">{relatedVideo.views} {t.views}</p>
+                                                </div>
+                                            </Link>
+                                        </motion.div>
+                                    );
+                                })}
                         </div>
                     </div>
                 </div>

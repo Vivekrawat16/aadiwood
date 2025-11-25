@@ -5,11 +5,34 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { Menu, X, Home, Video, Users, Info, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
     const [activeLink, setActiveLink] = useState("/");
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const { language, toggleLanguage } = useLanguage();
+
+    const translations = {
+        en: {
+            Home: "Home",
+            Videos: "Videos",
+            Partners: "Partners",
+            About: "About",
+            Contact: "Contact",
+            JoinUs: "JOIN US"
+        },
+        hi: {
+            Home: "होम",
+            Videos: "वीडियो",
+            Partners: "साझेदार",
+            About: "हमारे बारे में",
+            Contact: "संपर्क",
+            JoinUs: "जुड़ें"
+        }
+    };
+
+    const t = translations[language];
 
     useEffect(() => {
         const handleScroll = () => {
@@ -20,11 +43,11 @@ export default function Navbar() {
     }, []);
 
     const navLinks = [
-        { name: "Home", href: "/", icon: Home },
-        { name: "Videos", href: "/#videos", icon: Video },
-        { name: "Partners", href: "/#partners", icon: Users },
-        { name: "About", href: "/#about", icon: Info },
-        { name: "Contact", href: "/#contact", icon: Phone },
+        { name: t.Home, href: "/", icon: Home },
+        { name: t.Videos, href: "/#videos", icon: Video },
+        { name: t.Partners, href: "/#partners", icon: Users },
+        { name: t.About, href: "/#about", icon: Info },
+        { name: t.Contact, href: "/#contact", icon: Phone },
     ];
 
     return (
@@ -75,7 +98,7 @@ export default function Navbar() {
                         href="/#contact"
                         className="px-6 py-2 bg-terracotta text-white text-sm font-bold rounded-full hover:bg-sienna transition-colors shadow-lg hover:shadow-terracotta/40"
                     >
-                        JOIN US
+                        {t.JoinUs}
                     </Link>
                 </div>
             </motion.nav>
@@ -93,12 +116,20 @@ export default function Navbar() {
                             style={{ width: "auto", height: "auto" }}
                         />
                     </Link>
-                    <button
-                        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                        className="p-2 text-warm-taupe hover:text-ochre-gold transition-colors"
-                    >
-                        {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                    </button>
+                    <div className="flex items-center">
+                        <button
+                            onClick={toggleLanguage}
+                            className="mr-4 text-sm font-bold text-warm-taupe hover:text-ochre-gold transition-colors"
+                        >
+                            {language === 'en' ? 'HI' : 'EN'}
+                        </button>
+                        <button
+                            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                            className="p-2 text-warm-taupe hover:text-ochre-gold transition-colors"
+                        >
+                            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                        </button>
+                    </div>
                 </div>
 
                 {/* Mobile Menu Dropdown */}

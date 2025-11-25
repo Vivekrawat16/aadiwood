@@ -6,46 +6,51 @@ import Link from "next/link";
 import { X, Play, Camera, Film, Palette, TrendingUp, Award, Users } from "lucide-react";
 import { WarliDivider } from "@/components/ui/WarliComponents";
 import Button from "@/components/ui/Button";
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/lib/translations";
 
-const stats = [
-    { label: "Views", value: "200M+", color: "text-sapling-green" },
-    { label: "Subscribers", value: "740K+", color: "text-white" },
-    { label: "Silver Creator Award", value: "✓", color: "text-ochre-gold" }
-];
-
-const videos = [
+const staticVideos = [
     {
         id: 1,
-        title: "Jangal Rakhwala Re",
-        category: "Featured Release",
         thumbnail: "/thumbnail_01.jpg",
         span: "col-span-1 md:col-span-2 row-span-2",
         link: "https://youtu.be/HnnMo5dMdgs?si=9h51-T-EFAXlVglq"
     },
     {
         id: 2,
-        title: "Bhangoriya Festival",
-        category: "Director's Cut",
         thumbnail: "/thumbnail_04.jpg",
         span: "col-span-1 md:col-span-1 row-span-2",
         link: "https://youtu.be/4MoWGtFKTsw?si=mVfuRsJReklWwloa"
     },
     {
         id: 3,
-        title: "Behind The Scenes",
-        category: "Production Insights",
         thumbnail: "/thumbnail_05.png",
         span: "col-span-1 md:col-span-1 row-span-1"
     }
 ];
 
-const techSpecs = [
-    { icon: Camera, label: "Aerial Cinematography" },
-    { icon: Film, label: "Ultra HD Production" },
-    { icon: Palette, label: "DI Color Grading" }
+const techSpecsIcons = [
+    { icon: Camera, key: "aerial" },
+    { icon: Film, key: "ultraHd" },
+    { icon: Palette, key: "colorGrading" }
 ];
 
 export default function ShowreelPage() {
+    const { language } = useLanguage();
+    const t = translations[language].showreel;
+    const showreelVideos = translations[language].showreelVideos;
+
+    const videos = staticVideos.map((video, index) => ({
+        ...video,
+        ...showreelVideos[index]
+    }));
+
+    const stats = [
+        { label: t.stats.views, value: "200M+", color: "text-sapling-green" },
+        { label: t.stats.subscribers, value: "740K+", color: "text-white" },
+        { label: t.stats.award, value: "✓", color: "text-ochre-gold" }
+    ];
+
     return (
         <div className="min-h-screen bg-gradient-to-b from-[#020501] to-deep-forest relative overflow-x-hidden text-warm-taupe font-body">
             {/* Noise Texture Overlay */}
@@ -83,8 +88,8 @@ export default function ShowreelPage() {
                         transition={{ delay: 0.2, duration: 0.8 }}
                         className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-ochre-gold mb-6 leading-tight drop-shadow-lg"
                     >
-                        The Lens of Nimar:<br />
-                        <span className="text-warm-taupe">A Visual Legacy</span>
+                        {t.title}<br />
+                        <span className="text-warm-taupe">{t.subtitle}</span>
                     </motion.h1>
 
                     <motion.p
@@ -93,7 +98,7 @@ export default function ShowreelPage() {
                         transition={{ delay: 0.4, duration: 0.8 }}
                         className="text-warm-taupe/90 text-lg md:text-xl max-w-3xl mx-auto mb-10 font-light"
                     >
-                        From the valleys of Sendhwa to screens worldwide. We don't just record culture; we elevate it.
+                        {t.description}
                     </motion.p>
 
                     <motion.div
@@ -104,7 +109,7 @@ export default function ShowreelPage() {
                         <a href="https://youtube.com/@aadiwood7?si=fauyBwgK29dFBi_i" target="_blank" rel="noopener noreferrer">
                             <button className="group relative px-10 py-4 bg-white/10 backdrop-blur-md border-2 border-ochre-gold rounded-full text-ochre-gold font-bold text-lg tracking-wide hover:bg-ochre-gold hover:text-midnight-canopy transition-all duration-300 shadow-xl flex items-center gap-3 overflow-hidden">
                                 <span className="relative z-10 flex items-center gap-3">
-                                    WATCH SHOWREEL
+                                    {t.cta}
                                     <Play size={20} fill="currentColor" />
                                 </span>
                                 <div className="absolute inset-0 bg-ochre-gold transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
@@ -147,7 +152,7 @@ export default function ShowreelPage() {
                     viewport={{ once: true }}
                     className="text-3xl md:text-5xl font-display font-bold text-ochre-gold text-center mb-12"
                 >
-                    Featured Works
+                    {t.featuredWorks}
                 </motion.h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[250px]">
@@ -205,9 +210,9 @@ export default function ShowreelPage() {
                         viewport={{ once: true }}
                         className="flex flex-wrap justify-center gap-12 md:gap-20"
                     >
-                        {techSpecs.map((spec, index) => (
+                        {techSpecsIcons.map((spec, index) => (
                             <motion.div
-                                key={spec.label}
+                                key={spec.key}
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
@@ -217,7 +222,10 @@ export default function ShowreelPage() {
                                 <div className="w-16 h-16 rounded-full bg-ochre-gold/10 flex items-center justify-center border border-ochre-gold/30 group-hover:bg-ochre-gold/20 transition-colors">
                                     <spec.icon size={32} className="text-ochre-gold" />
                                 </div>
-                                <p className="text-warm-taupe text-sm font-medium text-center">{spec.label}</p>
+                                <p className="text-warm-taupe text-sm font-medium text-center">
+                                    {/* @ts-ignore */}
+                                    {t.techSpecs[spec.key]}
+                                </p>
                             </motion.div>
                         ))}
                     </motion.div>

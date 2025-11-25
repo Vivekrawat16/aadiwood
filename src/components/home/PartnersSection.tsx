@@ -4,18 +4,29 @@ import { motion, useMotionValue } from "framer-motion";
 import { partners } from "@/lib/partnersData";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useRef, useEffect, useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/lib/translations";
 
 export default function PartnersSection() {
     const x = useMotionValue(0);
     const containerRef = useRef<HTMLDivElement>(null);
     const [isHovering, setIsHovering] = useState(false);
     const [isDragging, setIsDragging] = useState(false);
+    const { language } = useLanguage();
+    const t = translations[language].partners;
+    const partnersList = translations[language].partnersList;
+
+    // Merge mock data (images/ids) with translation data (text)
+    const localizedPartners = partners.map((partner, index) => ({
+        ...partner,
+        ...partnersList[index]
+    }));
 
     // Auto-scroll speed
-    const AUTO_SCROLL_SPEED = 0.3;
+    const AUTO_SCROLL_SPEED = 1.0;
 
     // Duplicate partners array for smooth infinite loop
-    const extendedPartners = [...partners, ...partners];
+    const extendedPartners = [...localizedPartners, ...localizedPartners];
 
     // Infinite auto-scroll
     useEffect(() => {
@@ -54,10 +65,7 @@ export default function PartnersSection() {
                         viewport={{ once: true }}
                         className="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-white"
                     >
-                        CREATIVE{" "}
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-white to-secondary">
-                            NETWORK
-                        </span>
+                        {t.title}
                     </motion.h2>
 
                     <motion.div
@@ -73,7 +81,7 @@ export default function PartnersSection() {
                         transition={{ delay: 0.2 }}
                         className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto mt-4"
                     >
-                        Collaborating with visionary creators to shape the future of digital entertainment.
+                        {t.description}
                     </motion.p>
                 </div>
 
@@ -151,7 +159,7 @@ export default function PartnersSection() {
                                bg-emerald-600 hover:bg-emerald-500 
                                text-white shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
                                     >
-                                        View Profile →
+                                        {t.viewProfile} →
                                     </a>
                                 </motion.div>
                             ))}

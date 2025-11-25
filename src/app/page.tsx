@@ -13,11 +13,22 @@ import Image from "next/image";
 
 import SuccessModal from "@/components/home/SuccessModal";
 import CulturalModal from "@/components/home/CulturalModal";
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/lib/translations";
 
 export default function Home() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
   const [isCulturalModalOpen, setIsCulturalModalOpen] = useState(false);
+  const { language } = useLanguage();
+  const t = translations[language].home;
+  const founderProfile = translations[language].founderProfile;
+
+  // Merge mock data (images/social) with translation data (text)
+  const localizedFounder = {
+    ...founder,
+    ...founderProfile
+  };
 
   return (
     <div className="relative flex flex-col min-h-screen bg-midnight-canopy text-warm-taupe overflow-x-hidden">
@@ -74,7 +85,7 @@ export default function Home() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-5xl font-display font-bold text-warm-taupe">
-              Meet Our <span className="text-terracotta">Founder</span>
+              {t.meetOur} <span className="text-terracotta">{t.founder}</span>
             </h2>
             <div className="w-24 h-1 bg-ochre-gold mx-auto mt-4 rounded-full" />
           </motion.div>
@@ -89,8 +100,8 @@ export default function Home() {
             >
               <div className="relative w-full max-w-md aspect-[3/4] rounded-[2rem] overflow-hidden border border-ochre-gold/20 shadow-2xl">
                 <Image
-                  src={founder.photo}
-                  alt={founder.name}
+                  src={localizedFounder.photo}
+                  alt={localizedFounder.name}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
@@ -109,12 +120,12 @@ export default function Home() {
               className="glass-panel p-8 md:p-12 rounded-[2rem] relative"
             >
               <GondOverlay />
-              <h3 className="text-3xl md:text-4xl font-display font-bold text-white mb-2">{founder.name}</h3>
-              <p className="text-sapling-green font-medium tracking-wide mb-6 uppercase text-sm">{founder.role}</p>
-              <p className="text-gray-300 leading-relaxed mb-8 text-lg font-light">{founder.bio}</p>
+              <h3 className="text-3xl md:text-4xl font-display font-bold text-white mb-2">{localizedFounder.name}</h3>
+              <p className="text-sapling-green font-medium tracking-wide mb-6 uppercase text-sm">{localizedFounder.role}</p>
+              <p className="text-gray-300 leading-relaxed mb-8 text-lg font-light">{localizedFounder.bio}</p>
 
               <div className="space-y-4 mb-8">
-                {founder.achievements.map((item: string, i: number) => (
+                {localizedFounder.achievements.map((item: string, i: number) => (
                   <div key={i} className="flex items-start gap-3">
                     <div className="w-2 h-2 mt-2 bg-terracotta rounded-full" />
                     <p className="text-gray-300 text-sm">{item}</p>
@@ -124,9 +135,9 @@ export default function Home() {
 
               <Button
                 variant="secondary"
-                onClick={() => window.open(founder.social.youtube, '_blank')}
+                onClick={() => window.open(localizedFounder.social.youtube, '_blank')}
               >
-                Follow Journey
+                {t.followJourney}
               </Button>
             </motion.div>
           </div>
@@ -145,19 +156,19 @@ export default function Home() {
               viewport={{ once: true }}
             >
               <h2 className="text-4xl md:text-6xl font-display font-bold text-warm-taupe mb-8 leading-tight">
-                Preserving <br />
+                {t.preserving} <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-ochre-gold to-terracotta">
-                  Heritage
+                  {t.heritage}
                 </span>
               </h2>
               <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                Aadiwood is more than a production house; it is a digital sacred grove. We are dedicated to showcasing the rich cultural heritage of the Adivasi community through modern cinematography.
+                {t.heritageDesc1}
               </p>
               <p className="text-gray-300 text-lg leading-relaxed mb-10">
-                From the rhythmic beats of the Mandri to the intricate patterns of Warli art, we bring the soul of Nimar to the global stage.
+                {t.heritageDesc2}
               </p>
               <Button onClick={() => setIsContactModalOpen(true)}>
-                Work With Us
+                {t.workWithUs}
               </Button>
             </motion.div>
 
@@ -189,17 +200,17 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl md:text-6xl font-display font-bold text-white mb-6">
-              Let's Create <span className="text-sapling-green">Magic</span>
+              {t.letsCreate} <span className="text-sapling-green">{t.magic}</span>
             </h2>
             <p className="text-gray-300 text-xl mb-12 font-light">
-              Have a story to tell? We are listening.
+              {t.storyToTell}
             </p>
             <Button
               variant="primary"
               onClick={() => setIsContactModalOpen(true)}
               className="text-lg px-12 py-4"
             >
-              Get in Touch
+              {t.getInTouch}
             </Button>
           </motion.div>
         </div>

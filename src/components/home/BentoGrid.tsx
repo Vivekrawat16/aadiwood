@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Play, Music, Calendar, ArrowUpRight } from "lucide-react";
 import { mockVideos } from "@/lib/mockData";
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/lib/translations";
 
 
 
@@ -14,8 +16,11 @@ interface BentoGridProps {
 }
 
 export default function BentoGrid({ onOpenSuccessModal, onOpenCulturalModal }: BentoGridProps) {
-    const featuredVideo = mockVideos[0];
-    const secondaryVideo = mockVideos[1];
+    const { language } = useLanguage();
+    const t = translations[language].bento;
+    const videos = translations[language].videos;
+    const featuredVideo = { ...mockVideos[0], ...videos[0] };
+    const secondaryVideo = { ...mockVideos[1], ...videos[1] };
 
     return (
         <section className="py-8 md:py-20 px-4 md:px-8 max-w-7xl mx-auto relative">
@@ -26,7 +31,7 @@ export default function BentoGrid({ onOpenSuccessModal, onOpenCulturalModal }: B
                 className="mb-12 text-center"
             >
                 <h2 className="text-3xl md:text-5xl font-display font-bold text-warm-taupe mb-4">
-                    Latest <span className="text-terracotta">Releases</span>
+                    {t.latestReleases}
                 </h2>
                 <div className="w-24 h-1 bg-ochre-gold mx-auto rounded-full" />
             </motion.div>
@@ -49,14 +54,14 @@ export default function BentoGrid({ onOpenSuccessModal, onOpenCulturalModal }: B
                     <div className="absolute inset-0 bg-gradient-to-t from-midnight-canopy via-transparent to-transparent opacity-90" />
                     <div className="absolute bottom-0 left-0 p-6 md:p-8 w-full">
                         <span className="inline-block px-3 py-1 bg-terracotta text-white text-xs font-bold rounded-full mb-3">
-                            FEATURED
+                            {t.featured}
                         </span>
                         <h3 className="text-2xl md:text-4xl font-display font-bold text-white mb-2">
                             {featuredVideo.title}
                         </h3>
                         <p className="text-gray-300 line-clamp-2 mb-4 hidden md:block">{featuredVideo.description}</p>
                         <div className="flex items-center gap-2 text-sapling-green font-bold text-sm uppercase tracking-wider">
-                            <Play size={16} fill="currentColor" /> Watch Now
+                            <Play size={16} fill="currentColor" /> {t.watchNow}
                         </div>
                     </div>
                 </motion.div>
@@ -75,9 +80,9 @@ export default function BentoGrid({ onOpenSuccessModal, onOpenCulturalModal }: B
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-midnight-canopy/70 via-midnight-canopy/20 to-transparent" />
                     <div className="relative z-10">
-                        <h4 className="text-ochre-gold text-sm font-bold uppercase mb-1">Artist Spotlight</h4>
+                        <h4 className="text-ochre-gold text-sm font-bold uppercase mb-1">{t.artistSpotlight}</h4>
                         <h3 className="text-2xl font-display font-bold text-white mb-2">Sohan Bhai</h3>
-                        <p className="text-gray-400 text-sm mb-4">The voice behind "Jangal Rakhwala"</p>
+                        <p className="text-gray-400 text-sm mb-4">{t.artistDesc}</p>
                         <button className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-terracotta transition-colors">
                             <ArrowUpRight size={20} className="text-white" />
                         </button>
@@ -101,10 +106,10 @@ export default function BentoGrid({ onOpenSuccessModal, onOpenCulturalModal }: B
                         <Music size={48} className="text-ochre-gold" />
                     </div>
                     <h3 className="text-ochre-gold font-display font-bold text-xl relative z-10">
-                        Tribal Beats
+                        {t.tribalBeats}
                     </h3>
                     <p className="text-warm-taupe text-sm relative z-10">
-                        Explore the traditional instruments of Nimar.
+                        {t.tribalDesc}
                     </p>
                 </motion.div>
 
@@ -122,8 +127,8 @@ export default function BentoGrid({ onOpenSuccessModal, onOpenCulturalModal }: B
                     />
                     <div className="absolute inset-0 bg-midnight-canopy/30" />
                     <div className="relative z-10">
-                        <span className="text-xs font-bold opacity-80">UPCOMING</span>
-                        <h3 className="font-display font-bold text-xl mt-1">Adivasi Day</h3>
+                        <span className="text-xs font-bold opacity-80">{t.upcoming}</span>
+                        <h3 className="font-display font-bold text-xl mt-1">{t.adivasiDay}</h3>
                     </div>
                     <div className="flex items-center gap-2 text-sm font-medium relative z-10">
                         <Calendar size={16} /> Aug 9, 2025
@@ -147,7 +152,7 @@ export default function BentoGrid({ onOpenSuccessModal, onOpenCulturalModal }: B
                         <div className="absolute bottom-0 left-0 p-6 flex items-center justify-between w-full">
                             <div>
                                 <h3 className="text-xl font-display font-bold text-white">{secondaryVideo.title}</h3>
-                                <p className="text-gray-300 text-sm">New Release</p>
+                                <p className="text-gray-300 text-sm">{t.newRelease}</p>
                             </div>
                             <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center">
                                 <Play size={20} className="text-white ml-1" fill="currentColor" />

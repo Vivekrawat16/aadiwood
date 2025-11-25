@@ -1,6 +1,13 @@
+"use client";
+
 import { Youtube, Instagram, Facebook, Mail } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/lib/translations";
 
 export default function Footer() {
+    const { language } = useLanguage();
+    const t = translations[language].footer;
+
     return (
         <footer className="bg-primary pt-16 pb-8 relative text-white">
 
@@ -10,24 +17,24 @@ export default function Footer() {
                     <div>
                         <h2 className="text-3xl font-display font-bold text-white mb-4">AADIWOOD</h2>
                         <p className="text-white/80 max-w-xs leading-relaxed">
-                            The voice of Adivasi culture. Bridging tradition with modern cinema to showcase the untold stories of our land.
+                            {t.brandDesc}
                         </p>
                     </div>
 
                     {/* Quick Links */}
                     <div>
-                        <h3 className="text-lg font-bold text-secondary mb-6 uppercase tracking-wider">Explore</h3>
+                        <h3 className="text-lg font-bold text-secondary mb-6 uppercase tracking-wider">{t.explore}</h3>
                         <ul className="space-y-3 text-white/80">
-                            <li><a href="#" className="hover:text-secondary transition-colors">New Releases</a></li>
-                            <li><a href="#" className="hover:text-secondary transition-colors">Artists</a></li>
-                            <li><a href="#" className="hover:text-secondary transition-colors">Production Services</a></li>
-                            <li><a href="#" className="hover:text-secondary transition-colors">About Us</a></li>
+                            <li><a href="#" className="hover:text-secondary transition-colors">{t.newReleases}</a></li>
+                            <li><a href="#" className="hover:text-secondary transition-colors">{t.artists}</a></li>
+                            <li><a href="#" className="hover:text-secondary transition-colors">{t.productionServices}</a></li>
+                            <li><a href="#" className="hover:text-secondary transition-colors">{t.aboutUs}</a></li>
                         </ul>
                     </div>
 
                     {/* Connect */}
                     <div>
-                        <h3 className="text-lg font-bold text-secondary mb-6 uppercase tracking-wider">Connect</h3>
+                        <h3 className="text-lg font-bold text-secondary mb-6 uppercase tracking-wider">{t.connect}</h3>
                         <div className="flex space-x-4 mb-6">
                             <a href="https://www.youtube.com/@Aadiwood7" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center border-2 border-white/20 text-white hover:bg-white hover:text-primary transition-all rounded-full">
                                 <Youtube size={18} />
@@ -47,7 +54,7 @@ export default function Footer() {
                 </div>
 
                 <div className="border-t border-white/10 pt-8 text-center text-white/60 text-sm">
-                    <p>&copy; {new Date().getFullYear()} Aadiwood Production. All rights reserved.</p>
+                    <p>&copy; {new Date().getFullYear()} Aadiwood Production. {t.rights}</p>
                 </div>
             </div>
         </footer>
