@@ -18,7 +18,7 @@ export default function BentoGrid({ onOpenSuccessModal, onOpenCulturalModal }: B
     const secondaryVideo = mockVideos[1];
 
     return (
-        <section className="py-20 px-4 md:px-8 max-w-7xl mx-auto relative">
+        <section className="py-8 md:py-20 px-4 md:px-8 max-w-7xl mx-auto relative">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -31,12 +31,12 @@ export default function BentoGrid({ onOpenSuccessModal, onOpenCulturalModal }: B
                 <div className="w-24 h-1 bg-ochre-gold mx-auto rounded-full" />
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-3 gap-4 h-auto md:h-[800px]">
+            <div className="flex flex-col md:grid md:grid-cols-4 md:grid-rows-3 gap-4 h-auto md:h-[800px]">
                 {/* Module A: Featured Video (Large Square) */}
                 <motion.div
                     whileHover={{ scale: 0.98 }}
                     onClick={onOpenSuccessModal}
-                    className="col-span-1 md:col-span-2 md:row-span-2 relative rounded-3xl overflow-hidden group cursor-pointer glass-panel order-2 md:order-none"
+                    className="w-full md:col-span-2 md:row-span-2 relative rounded-3xl overflow-hidden group cursor-pointer glass-panel order-2 md:order-none min-h-[300px] md:min-h-0"
                 >
                     <Image
                         src={featuredVideo.thumbnail}
@@ -54,7 +54,7 @@ export default function BentoGrid({ onOpenSuccessModal, onOpenCulturalModal }: B
                         <h3 className="text-2xl md:text-4xl font-display font-bold text-white mb-2">
                             {featuredVideo.title}
                         </h3>
-                        <p className="text-gray-300 line-clamp-2 mb-4">{featuredVideo.description}</p>
+                        <p className="text-gray-300 line-clamp-2 mb-4 hidden md:block">{featuredVideo.description}</p>
                         <div className="flex items-center gap-2 text-sapling-green font-bold text-sm uppercase tracking-wider">
                             <Play size={16} fill="currentColor" /> Watch Now
                         </div>
@@ -64,7 +64,7 @@ export default function BentoGrid({ onOpenSuccessModal, onOpenCulturalModal }: B
                 {/* Module B: Artist Spotlight (Vertical Rectangle) */}
                 <motion.div
                     whileHover={{ y: -5 }}
-                    className="col-span-1 md:col-span-1 md:row-span-2 relative rounded-3xl overflow-hidden glass-panel p-6 flex flex-col justify-end group order-1 md:order-none"
+                    className="hidden md:flex col-span-1 md:col-span-1 md:row-span-2 relative rounded-3xl overflow-hidden glass-panel p-6 flex-col justify-end group"
                 >
                     <Image
                         src="/artist-spotlight-bg.jpg"
@@ -88,16 +88,15 @@ export default function BentoGrid({ onOpenSuccessModal, onOpenCulturalModal }: B
                 <motion.div
                     whileHover={{ scale: 1.02 }}
                     onClick={onOpenCulturalModal}
-                    className="col-span-1 md:col-span-1 md:row-span-1 rounded-3xl p-6 flex flex-col justify-between relative overflow-hidden cursor-pointer"
+                    className="w-full md:col-span-1 md:row-span-1 rounded-3xl p-6 flex flex-col justify-between relative overflow-hidden cursor-pointer order-1 md:order-none min-h-[200px] md:min-h-0"
                 >
                     <Image
                         src="/tribal-beats-bg.png"
                         alt="Tribal Beats"
                         fill
                         sizes="(max-width: 768px) 100vw, 25vw"
-                        className="object-cover brightness-150"
+                        className="object-cover brightness-[2.0]"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-midnight-canopy/60 via-midnight-canopy/10 to-transparent" />
                     <div className="absolute top-0 right-0 p-4 opacity-40 z-10">
                         <Music size={48} className="text-ochre-gold" />
                     </div>
@@ -112,7 +111,7 @@ export default function BentoGrid({ onOpenSuccessModal, onOpenCulturalModal }: B
                 {/* Module D: Event (Square) */}
                 <motion.div
                     whileHover={{ scale: 1.02 }}
-                    className="col-span-1 md:col-span-1 md:row-span-1 rounded-3xl p-6 flex flex-col justify-between text-white relative overflow-hidden"
+                    className="hidden md:flex col-span-1 md:col-span-1 md:row-span-1 rounded-3xl p-6 flex-col justify-between text-white relative overflow-hidden"
                 >
                     <Image
                         src="/upcoming-adivasi-bg.jpg"
@@ -132,11 +131,10 @@ export default function BentoGrid({ onOpenSuccessModal, onOpenCulturalModal }: B
                 </motion.div>
 
                 {/* Module E: Secondary Video (Wide) */}
-                {/* Module E: Secondary Video (Wide) */}
-                <Link href={`/video/${secondaryVideo.id}`} className="col-span-1 md:col-span-2 md:row-span-1 block">
+                <Link href={`/video/${secondaryVideo.id}`} className="w-full md:col-span-2 md:row-span-1 block order-3 md:order-none">
                     <motion.div
                         whileHover={{ scale: 0.98 }}
-                        className="relative h-full rounded-3xl overflow-hidden group cursor-pointer glass-panel"
+                        className="relative h-full rounded-3xl overflow-hidden group cursor-pointer glass-panel min-h-[250px] md:min-h-0"
                     >
                         <Image
                             src={secondaryVideo.thumbnail}

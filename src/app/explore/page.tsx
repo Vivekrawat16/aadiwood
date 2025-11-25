@@ -15,13 +15,14 @@ export default function ExplorePage() {
             />
 
             {/* Close Button */}
-            <Link href="/" className="fixed top-6 right-6 z-50">
+            <Link href="/" className="fixed top-20 md:top-6 left-4 md:right-6 md:left-auto z-50">
                 <motion.button
                     whileHover={{ scale: 1.1, rotate: 90 }}
                     whileTap={{ scale: 0.9 }}
-                    className="w-12 h-12 rounded-full bg-midnight-canopy/50 backdrop-blur-md border border-terracotta/50 flex items-center justify-center text-terracotta hover:bg-terracotta hover:text-white transition-colors shadow-lg"
+                    className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight-canopy/50 backdrop-blur-md border border-terracotta/50 flex items-center justify-center text-terracotta hover:bg-terracotta hover:text-white transition-colors shadow-lg"
                 >
-                    <X size={24} />
+                    <X size={20} className="md:hidden" />
+                    <X size={24} className="hidden md:block" />
                 </motion.button>
             </Link>
 
