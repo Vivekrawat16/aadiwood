@@ -1,71 +1,125 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #1A4D2E;
-  /* Deep Forest Green */
-  --color-secondary: #D27D2D;
-  /* Earthy Clay/Terracotta */
-  --color-background: #FDFBF7;
-  /* Cream/Off-white */
-  --color-accent: #2C3329;
-  /* Dark Olive/Charcoal */
+  /* Nimar Landscape Palette */
+  --color-midnight-canopy: #020501;
+  /* Global Background */
+  --color-deep-forest: #182D09;
+  /* Surface/Cards */
+  --color-moss-shadow: #2E4A3F;
+  /* Hover State */
+  --color-terracotta: #D26640;
+  /* Primary CTA */
+  --color-ochre-gold: #C4A484;
+  /* Secondary/Borders */
+  --color-warm-taupe: #F7F3EE;
+  /* Text */
+  --color-sapling-green: #8BC34A;
+  /* Accents */
+  --color-sienna: #A0522D;
+  /* Active State */
+  --color-cyber-teal: #009688;
+  /* Links */
 
-  --font-sans: var(--font-open-sans);
-  --font-display: var(--font-montserrat);
+  /* Fonts */
+  --font-display: var(--font-fauna-one);
+  --font-body: var(--font-dm-sans);
+
+  /* Animations */
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
+  }
 }
 
 @layer utilities {
-  .cinematic-card {
-    background: #FFFFFF;
-    border: 1px solid rgba(26, 77, 46, 0.08);
-    box-shadow: 0 4px 20px rgba(26, 77, 46, 0.05);
-    transition: all 0.3s ease;
-    border-radius: 1rem;
-  }
-
-  .cinematic-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(26, 77, 46, 0.12);
-    border-color: var(--color-primary);
-  }
-
-  .glass-light {
-    background: rgba(253, 251, 247, 0.7);
+  .glass-panel {
+    background: rgba(24, 45, 9, 0.4);
     backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(26, 77, 46, 0.08);
+    border: 1px solid rgba(196, 164, 132, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(2, 5, 1, 0.37);
   }
 
-  .cinematic-gradient {
-    background: linear-gradient(135deg, #1A4D2E 0%, #D27D2D 100%);
+  .glass-nav {
+    background: rgba(2, 5, 1, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(196, 164, 132, 0.3);
+  }
+
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #C4A484 0%, #F7F3EE 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  .cultural-border {
-    border-top: 3px solid var(--color-secondary);
-    position: relative;
+  .komorebi-gradient {
+    background:
+      radial-gradient(circle at 50% 0%, rgba(46, 74, 63, 0.4) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(24, 45, 9, 0.8) 0%, transparent 40%),
+      radial-gradient(circle at 100% 100%, rgba(210, 102, 64, 0.1) 0%, transparent 30%),
+      #020501;
   }
 
-  .cultural-border::before {
+  .warli-border-top {
+    position: relative;
+    border-top: 2px solid var(--color-ochre-gold);
+  }
+
+  .warli-border-top::after {
     content: '';
     position: absolute;
-    top: -3px;
+    top: -6px;
     left: 0;
-    right: 0;
-    height: 3px;
-    background: repeating-linear-gradient(90deg,
-        var(--color-primary) 0px,
-        var(--color-primary) 20px,
-        transparent 20px,
-        transparent 30px);
+    width: 100%;
+    height: 10px;
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='10' viewBox='0 0 20 10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 L10 0 L20 10' fill='none' stroke='%23C4A484' stroke-width='1'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+  }
+
+  .gond-texture {
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='1' fill='%23C4A484' fill-opacity='0.05'/%3E%3Ccircle cx='12' cy='12' r='1' fill='%23C4A484' fill-opacity='0.05'/%3E%3C/svg%3E");
   }
 }
 
 body {
-  background-color: var(--color-background);
-  /* Subtle organic texture */
-  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231A4D2E' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  color: var(--color-accent);
-  font-family: var(--font-sans);
+  background-color: var(--color-midnight-canopy);
+  color: var(--color-warm-taupe);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+}
+
+@layer utilities {
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+  }
 }
