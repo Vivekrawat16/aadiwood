@@ -1,24 +1,25 @@
 import type { Metadata } from "next";
-import { Montserrat, Open_Sans } from "next/font/google";
+import { Fauna_One, DM_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import StructuredData from "@/components/StructuredData";
+import CustomCursor from "@/components/ui/CustomCursor";
 
-const montserrat = Montserrat({
+const faunaOne = Fauna_One({
+  weight: "400",
   subsets: ["latin"],
-  variable: "--font-montserrat",
+  variable: "--font-fauna-one",
 });
 
-const openSans = Open_Sans({
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  variable: "--font-open-sans",
+  variable: "--font-dm-sans",
 });
-
 
 export const metadata: Metadata = {
-  title: "Aadiwood Production | The Voice of Adivasi Culture",
+  title: "Aadiwood Production | Voice of Adivasi Culture",
   description:
     "Official website of Aadiwood Production - The Brand of Nimar. Promoting Adivasi culture through film, music videos, and storytelling. Experience authentic tribal cinematography and cultural preservation.",
   keywords: [
@@ -52,7 +53,7 @@ export const metadata: Metadata = {
     apple: "/favicon.ico",
   },
   openGraph: {
-    title: "Aadiwood Production | The Voice of Adivasi Culture",
+    title: "Aadiwood Production | Voice of Adivasi Culture",
     description: "Promoting Adivasi culture through modern film production and music videos. The Brand of Nimar.",
     url: "https://aadiwood.com",
     siteName: "Aadiwood Production",
@@ -69,24 +70,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aadiwood Production | The Voice of Adivasi Culture",
-    description: "Promoting Adivasi culture through modern film production and music videos.",
-    images: ["/og-image.jpg"],
-    creator: "@aadiwood",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  verification: {
-    google: "your-google-verification-code",
+    title: "Aadiwood Production | Voice of Adivasi Culture",
+    description: "The premier production house of Nimar, showcasing the rich heritage of Bhil and Barela tribes through modern media.",
   },
 };
 
@@ -98,8 +83,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${montserrat.variable} ${openSans.variable} antialiased bg-background text-accent font-sans overflow-x-hidden`}
+        className={`${faunaOne.variable} ${dmSans.variable} antialiased`}
       >
+        <CustomCursor />
         <Navbar />
         <StructuredData />
         <main className="min-h-screen">{children}</main>
