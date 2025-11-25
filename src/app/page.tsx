@@ -20,7 +20,7 @@ export default function Home() {
   const [isCulturalModalOpen, setIsCulturalModalOpen] = useState(false);
 
   return (
-    <div className="flex flex-col min-h-screen bg-midnight-canopy text-warm-taupe overflow-x-hidden">
+    <div className="relative flex flex-col min-h-screen bg-midnight-canopy text-warm-taupe overflow-x-hidden">
       {/* Hero Section */}
       <ParallaxHero />
 
@@ -49,18 +49,22 @@ export default function Home() {
       />
 
       {/* Warli Divider */}
-      <WarliDivider />
+      <div className="md:block">
+        <WarliDivider />
+      </div>
 
       {/* Partners Section */}
-      <div id="partners" className="relative bg-deep-forest/30 py-12">
+      <div id="partners" className="relative bg-deep-forest/30 py-6 md:py-12">
         <PartnersSection />
       </div>
 
       {/* Warli Divider */}
-      <WarliDivider />
+      <div className="md:block">
+        <WarliDivider />
+      </div>
 
       {/* Founder Section */}
-      <section id="founder" className="relative py-20 md:py-32 overflow-hidden">
+      <section id="founder" className="relative py-10 md:py-32 overflow-hidden">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-deep-forest rounded-full blur-[120px] opacity-40 -z-10" />
         <div className="container mx-auto px-6 lg:px-10 relative z-10">
           <motion.div

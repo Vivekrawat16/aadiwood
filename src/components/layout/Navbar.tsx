@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
     const [activeLink, setActiveLink] = useState("/");
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -79,37 +80,57 @@ export default function Navbar() {
                 </div>
             </motion.nav>
 
-            {/* Mobile Bottom Navigation */}
-            <nav className="fixed bottom-0 left-0 w-full z-50 md:hidden glass-nav border-t border-ochre-gold/20 pb-safe">
-                <div className="flex justify-around items-center p-3">
-                    {navLinks.map((link) => {
-                        const Icon = link.icon;
-                        const isActive = activeLink === link.href;
-                        return (
-                            <Link
-                                key={link.name}
-                                href={link.href}
-                                onClick={() => setActiveLink(link.href)}
-                                className={`flex flex-col items-center space-y-1 p-2 rounded-xl transition-all ${isActive ? "text-sapling-green" : "text-warm-taupe/70"
-                                    }`}
-                            >
-                                <motion.div
-                                    whileTap={{ scale: 0.9 }}
-                                    animate={isActive ? { y: -5 } : { y: 0 }}
-                                >
-                                    <Icon size={24} strokeWidth={isActive ? 2.5 : 1.5} />
-                                </motion.div>
-                                <span className="text-[10px] font-medium">{link.name}</span>
-                                {isActive && (
-                                    <motion.div
-                                        layoutId="mobile-indicator"
-                                        className="absolute bottom-1 w-1 h-1 bg-sapling-green rounded-full"
-                                    />
-                                )}
-                            </Link>
-                        );
-                    })}
+            {/* Mobile Top Navigation */}
+            <nav className="fixed top-0 left-0 w-full z-50 md:hidden glass-nav border-b border-ochre-gold/20">
+                <div className="flex items-center justify-between p-4">
+                    <Link href="/" className="flex items-center">
+                        <Image
+                            src="/logo-full-v2.png"
+                            alt="Aadiwood"
+                            width={120}
+                            height={40}
+                            className="object-contain brightness-200"
+                            style={{ width: "auto", height: "auto" }}
+                        />
+                    </Link>
+                    <button
+                        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                        className="p-2 text-warm-taupe hover:text-ochre-gold transition-colors"
+                    >
+                        {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                    </button>
                 </div>
+
+                {/* Mobile Menu Dropdown */}
+                <AnimatePresence>
+                    {mobileMenuOpen && (
+                        <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            className="border-t border-ochre-gold/10 bg-midnight-canopy/40 backdrop-blur-xl"
+                        >
+                            <div className="flex flex-col p-4 space-y-2">
+                                {navLinks.map((link) => {
+                                    const isActive = activeLink === link.href;
+                                    return (
+                                        <Link
+                                            key={link.name}
+                                            href={link.href}
+                                            onClick={() => {
+                                                setActiveLink(link.href);
+                                                setMobileMenuOpen(false);
+                                            }}
+                                            className={`py-3 px-4 rounded-lg text-sm font-medium transition-all ${isActive ? "text-sapling-green bg-sapling-green/10" : "text-warm-taupe/80 hover:bg-white/5"}`}
+                                        >
+                                            {link.name}
+                                        </Link>
+                                    );
+                                })}
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </nav>
         </>
     );

@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
 import Button from "@/components/ui/Button";
+import Image from "next/image";
 
 export default function ParallaxHero() {
     const ref = useRef(null);
@@ -17,7 +18,7 @@ export default function ParallaxHero() {
     const foregroundY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
 
     return (
-        <div ref={ref} className="relative h-screen w-full overflow-hidden bg-midnight-canopy">
+        <div ref={ref} className="relative min-h-screen md:h-screen w-full overflow-hidden bg-midnight-canopy pt-16 md:pt-0">
             {/* Layer 0: Video Background */}
             <video
                 autoPlay
@@ -30,7 +31,7 @@ export default function ParallaxHero() {
             </video>
 
             {/* Dark Overlay */}
-            <div className="absolute inset-0 bg-midnight-canopy/50 z-5" />
+            <div className="absolute inset-0 bg-midnight-canopy/30 z-5" />
 
             {/* Layer 1: Tribal Pattern Overlay */}
             <div className="absolute inset-0 z-10 opacity-10"
@@ -39,8 +40,8 @@ export default function ParallaxHero() {
 
             {/* Layer 2: Main Content (Text) */}
             <motion.div
-                className="relative z-20 h-full flex flex-col justify-center items-center text-center px-4"
-                style={{ y: textY }}
+                className="relative z-20 h-full flex flex-col justify-center items-center text-center px-4 my-8 md:my-0 mt-16 md:mt-0"
+                style={{ y: typeof window !== 'undefined' && window.innerWidth >= 768 ? textY : 0 }}
             >
                 <motion.h2
                     initial={{ opacity: 0, y: 20 }}
@@ -55,7 +56,7 @@ export default function ParallaxHero() {
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
-                    className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-warm-taupe mb-6 leading-tight"
+                    className="text-4xl md:text-7xl lg:text-8xl font-display font-bold text-warm-taupe mb-6 leading-tight"
                 >
                     THE VOICE OF <br />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-sapling-green to-terracotta">
@@ -67,7 +68,7 @@ export default function ParallaxHero() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.6, duration: 0.8 }}
-                    className="text-warm-taupe/80 max-w-2xl mx-auto mb-10 text-lg md:text-xl font-light"
+                    className="text-white/90 max-w-2xl mx-auto mb-10 text-lg md:text-xl font-light px-4 drop-shadow-lg"
                 >
                     Bridging the gap between ancient Adivasi roots and modern cinema.
                     <br />The voice of the forest, now in high definition.
@@ -77,26 +78,21 @@ export default function ParallaxHero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.8, duration: 0.6 }}
-                    className="flex gap-4"
+                    className="flex flex-col md:flex-row gap-3 md:gap-4 w-full max-w-md md:max-w-none justify-center px-4"
                 >
-                    <Link href="/showreel">
-                        <Button variant="primary">Watch Showreel</Button>
+                    <Link href="/showreel" className="w-full md:w-auto">
+                        <button className="w-full md:w-auto px-4 md:px-6 py-2.5 md:py-3 bg-transparent backdrop-blur-sm text-white font-bold rounded-full hover:bg-terracotta/20 transition-all shadow-lg border-2 border-terracotta">
+                            Watch Showreel
+                        </button>
                     </Link>
-                    <Link href="/explore">
-                        <Button variant="ghost">Explore Culture</Button>
+                    <Link href="/explore" className="w-full md:w-auto">
+                        <button className="w-full md:w-auto px-4 md:px-6 py-2.5 md:py-3 bg-midnight-canopy/60 backdrop-blur-md text-warm-taupe font-bold rounded-full hover:bg-midnight-canopy/80 transition-all shadow-lg border border-ochre-gold/40">
+                            Explore Culture
+                        </button>
                     </Link>
                 </motion.div>
             </motion.div>
 
-            {/* Layer 3: Foreground Elements (Blurred Foliage simulation) */}
-            <motion.div
-                className="absolute -bottom-20 -left-20 w-96 h-96 bg-deep-forest rounded-full blur-[100px] opacity-60 z-30 pointer-events-none"
-                style={{ y: foregroundY }}
-            />
-            <motion.div
-                className="absolute -bottom-20 -right-20 w-[500px] h-[500px] bg-moss-shadow rounded-full blur-[120px] opacity-50 z-30 pointer-events-none"
-                style={{ y: foregroundY }}
-            />
         </div>
     );
 }
