@@ -23,7 +23,8 @@
 
   /* Fonts */
   --font-display: var(--font-fauna-one);
-  --font-body: var(--font-dm-sans);
+  --font-body: var(--font-inter);
+  --font-accent: var(--font-outfit);
 
   /* Animations */
   --animate-float: float 6s ease-in-out infinite;

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fauna_One, DM_Sans } from "next/font/google";
+import { Fauna_One, Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -13,9 +13,16 @@ const faunaOne = Fauna_One({
   variable: "--font-fauna-one",
 });
 
-const dmSans = DM_Sans({
+const inter = Inter({
+  weight: "400",
   subsets: ["latin"],
-  variable: "--font-dm-sans",
+  variable: "--font-inter",
+});
+
+const outfit = Outfit({
+  weight: "500",
+  subsets: ["latin"],
+  variable: "--font-outfit",
 });
 
 export const metadata: Metadata = {
@@ -83,7 +90,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${faunaOne.variable} ${dmSans.variable} antialiased`}
+        className={`${faunaOne.variable} ${inter.variable} ${outfit.variable} antialiased`}
       >
         <LanguageProvider>
           <Navbar />

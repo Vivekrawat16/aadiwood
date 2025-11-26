@@ -36,6 +36,7 @@ export default function SuccessModal({ isOpen, onClose }: SuccessModalProps) {
                         }}
                         exit={{ scale: 0.9, opacity: 0, y: 20 }}
                         className="relative w-full max-w-5xl max-h-[90vh] overflow-y-auto bg-deep-forest/40 backdrop-blur-xl border border-white/5 rounded-[20px] shadow-2xl scrollbar-hide z-10"
+                        style={{ position: 'relative' }}
                     >
                         {/* Noise Texture */}
                         <div className="absolute inset-0 opacity-5 pointer-events-none mix-blend-overlay"

@@ -40,6 +40,7 @@ export default function CulturalModal({ isOpen, onClose }: CulturalModalProps) {
                         }}
                         exit={{ y: "100%", opacity: 0 }}
                         className="relative w-full max-w-5xl max-h-[90vh] overflow-y-auto bg-deep-forest/40 backdrop-blur-xl border border-white/5 rounded-t-[20px] md:rounded-[20px] shadow-2xl scrollbar-hide z-10"
+                        style={{ position: 'relative' }}
                     >
                         {/* Wood Grain Texture */}
                         <div className="absolute inset-0 opacity-5 pointer-events-none mix-blend-overlay"
