@@ -94,13 +94,13 @@ export default function CulturalModal({ isOpen, onClose }: CulturalModalProps) {
                                 className="max-w-3xl mx-auto text-center space-y-6"
                             >
                                 <p className="text-xl leading-relaxed text-warm-taupe/90 font-light" style={{ lineHeight: 1.8 }}>
-                                    In the digital age of synthesizers and auto-tune, Aadiwood Production remains grounded in a rhythm that is centuries old: the <span className="text-ochre-gold font-bold">Timli</span>. This isn't just a genre; it is the heartbeat of the Bhil and Barela communities of the Nimar valley.
+                                    In the digital age of synthesizers and auto-tune, Aadiwood Production remains grounded in a rhythm that is centuries old: the <span className="text-ochre-gold font-bold">Timli</span>. This isn't just a genre; it is the heartbeat of the Bhilala, Bhil and Barela communities of the Nimar valley.
                                 </p>
                                 <p className="text-lg leading-relaxed text-gray-400" style={{ lineHeight: 1.8 }}>
                                     At the center of this soundscape is the <span className="text-ochre-gold font-medium">Mandal</span>—a large, traditional drum that does not just keep time but commands movement. Whether it is the festive chaos of Bhangoriya or the devotional reverence of Badwa Pujan, the deep, resonant boom of the Mandal is the signal for the community to unite.
                                 </p>
                                 <p className="text-lg leading-relaxed text-gray-400" style={{ lineHeight: 1.8 }}>
-                                    Modern music directors like <span className="text-white font-medium">Ritesh Kirade</span> and <span className="text-white font-medium">Shivaji Sengar</span> have mastered the art of fusing these raw, organic percussion sounds with high-energy digital basslines. This unique blend creates a sound that is distinctively "Aadiwood"—where the dust of the village fair meets the polish of a global studio.
+                                    Modern music directors like <span className="text-white font-medium">Ritesh Kirade</span> and <span className="text-white font-medium">Bheem Kanoje</span> have mastered the art of fusing these raw, organic percussion sounds with high-energy digital basslines. This unique blend creates a sound that is distinctively "Aadiwood"—where the dust of the village fair meets the polish of a global studio.
                                 </p>
                             </motion.div>
 
